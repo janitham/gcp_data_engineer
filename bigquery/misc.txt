@@ -1,0 +1,22 @@
+bq mk ds_from_cli
+
+bq mk --data_location=asia-southeast1 ds_from_cli
+
+bq ls
+
+bq ls --format=prettyjson
+
+bq show ds_from_cli
+
+bq load --source_format=CSV   --skip_leading_rows=1   ds_from_cli.employee   ./employee.csv   Name:STRING,Company:STRING,joiningdate:String
+
+
+SELECT
+  *
+FROM
+  `gcpdataengineer-422305.partition_ds.INFORMATION_SCHEMA.PARTITIONS`
+WHERE
+  table_name = 'table_with_partitioning_with_where'
+
+
+gcloud sql instances list

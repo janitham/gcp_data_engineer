@@ -1,0 +1,99 @@
+with all_data as (select *
+from (SELECT
+  gender, tripduration
+FROM
+  `bigquery-public-data.new_york_citibike.citibike_trips`)
+where tripduration > 1000)
+
+select * from all_data where gender = 'male'
+
+
+SELECT
+  gender, tripduration
+FROM
+  `bigquery-public-data.new_york_citibike.citibike_trips`
+order by tripduration desc
+
+SELECT
+  * except(gender, tripduration)
+FROM
+  `bigquery-public-data.new_york_citibike.citibike_trips`
+
+select *
+from (SELECT
+  gender, tripduration
+FROM
+  `bigquery-public-data.new_york_citibike.citibike_trips`)
+where tripduration > 1000
+
+SELECT
+  * replace (bikeid + 10 as bikeid)
+FROM
+  `bigquery-public-data.new_york_citibike.citibike_trips`
+where
+  tripduration >1000 and gender = 'female'
+
+SELECT
+  tripduration as duration_of_trip
+FROM
+  `bigquery-public-data.new_york_citibike.citibike_trips`
+where
+  tripduration >1000 and gender = 'female'
+
+SELECT
+  count(*)
+FROM
+  `bigquery-public-data.new_york_citibike.citibike_trips`
+
+SELECT
+  gender,
+  count(*) as total
+FROM
+  `bigquery-public-data.new_york_citibike.citibike_trips`
+group by gender
+
+SELECT
+  sum(tripduration) as total_trips
+FROM
+  `bigquery-public-data.new_york_citibike.citibike_trips`
+group by gender
+
+SELECT
+  avg(tripduration) as total_trips
+FROM
+  `bigquery-public-data.new_york_citibike.citibike_trips`
+where tripduration is not null
+
+SELECT
+  name,
+  replace(name,' at ', ' ')
+FROM
+  `bigquery-public-data.san_francisco.bikeshare_stations`
+LIMIT
+  1000
+
+SELECT
+  name,
+  split(replace(name,' at ', ' '), ' ')
+FROM
+  `bigquery-public-data.san_francisco.bikeshare_stations`
+LIMIT
+  1000
+
+SELECT
+  installation_date,
+  extract(year from installation_date)
+FROM
+  `bigquery-public-data.san_francisco.bikeshare_stations`
+LIMIT
+  1000
+
+SELECT
+  installation_date,
+  extract(year from installation_date),
+  extract(month from installation_date)
+FROM
+  `bigquery-public-data.san_francisco.bikeshare_stations`
+LIMIT
+  1000
+
